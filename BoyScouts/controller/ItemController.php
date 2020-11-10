@@ -1,52 +1,14 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- * Description of ItemController
- *
- * @author Karol
- */
 class ItemController {
 
     public function __construct() {
         $this->view = new View();
     }
 
-    public function login() {
-        require 'model/ItemModel.php';
-        $this->view->show("login.php");
-    }
-
     public function home() {
         require 'model/ItemModel.php';
         $this->view->show("indexView.php");
-    }
-
-    public function modificarVista() {
-        require 'model/ItemModel.php';
-        $items = new ItemModel();
-        $id = filter_input(INPUT_GET, 'id');
-        $data['listado'] = $items->listarPorID($id);
-        $this->view->show("modificarVista.php", $data);
-    }
-
-    public function metodoActualizar() {
-        require 'model/ItemModel.php';
-        $items = new ItemModel();
-        $id = filter_input(INPUT_POST, 'cedula');
-        $nombre = filter_input(INPUT_POST, 'nombre');
-        $apellido = filter_input(INPUT_POST, 'apellido');
-        $email = filter_input(INPUT_POST, 'mail');
-        $items->modificarDatos($id, $nombre, $apellido, $email);
-        $data['listado'] = $items->listar();
-        $this->view->show("ver.php", $data);
-               $message = 'Persona Modificada';
-       echo "<script type='text/javascript'>alert('$message');</script>";
     }
 
     public function insertar() {
@@ -118,20 +80,6 @@ class ItemController {
        echo "<script type='text/javascript'>alert('$message');</script>";
     }
 
-    public function inicioSesionAdmin() {
-        require 'model/ItemModel.php';
-        $items = new ItemModel();
-        $usuarioCliente = filter_input(INPUT_POST, 'nombre');
-        $contra = filter_input(INPUT_POST, 'contra');
-        $resultado = $items->login($usuarioCliente, $contra);
-        if ($resultado != null) {
-            $this->view->show("crud.php");
-        } else {
-            $message = 'Contraseña/Usuario incorrecto';
-            echo "<script type='text/javascript'>alert('$message');</script>";
-            $this->view->show("login.php");
-        }
-    }
     public function insertarMiembroSinGrupo() {
         require 'model/ItemModel.php';
         $items = new ItemModel();
@@ -150,13 +98,9 @@ class ItemController {
       
       $resultado=  $items->insertarMiembroSinGrupo($cedula, $nombre, $apellido, $correo, $telefono, $pais, $provincia,$canton,$distrito,$detalle);
       if($resultado!= null){
-//          $data['listado'] = $items->listar();   
-//          $this->view->show("ver.php",$data);
         $message = 'Miembro Registrada';
        echo "<script type='text/javascript'>alert('$message');</script>";  
       }else{
-//          $data['listado'] = $items->listar();   
-//          $this->view->show("ver.php",$data);
           $message = $nombre.', registrado (a)';
        echo "<script type='text/javascript'>alert('$message');</script>";
           
@@ -185,13 +129,9 @@ class ItemController {
       
       $resultado=  $items->insertar($cedula, $nombre, $apellido, $correo, $telefono, $pais, $provincia,$canton,$distrito,$detalle,$idgrupo,$monitor,$jefe);
       if($resultado!= null){
-//          $data['listado'] = $items->listar();   
-//          $this->view->show("ver.php",$data);
         $message = 'Miembro Registrada';
        echo "<script type='text/javascript'>alert('$message');</script>";  
       }else{
-//          $data['listado'] = $items->listar();   
-//          $this->view->show("ver.php",$data);
           $message = $nombre.', registrado (a)';
        echo "<script type='text/javascript'>alert('$message');</script>";
           
@@ -211,13 +151,9 @@ class ItemController {
       
       $resultado=  $items->insertarGrupo($nombre,$tipo,$idrama,$cedulamonitor);
       if($resultado!= null){
-//          $data['listado'] = $items->listar();   
-//          $this->view->show("ver.php",$data);
         $message = 'Grupo Registrada';
        echo "<script type='text/javascript'>alert('$message');</script>";  
       }else{
-//          $data['listado'] = $items->listar();   
-//          $this->view->show("ver.php",$data);
           $message = $nombre.', registrado (a)';
        echo "<script type='text/javascript'>alert('$message');</script>";
           

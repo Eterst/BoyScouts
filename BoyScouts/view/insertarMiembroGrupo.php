@@ -40,10 +40,10 @@ include_once 'public/headerPrincipal.php';
                             </button>
                 </div>
             <div class="col-md-4">
-                <!-- Algo xd -->
+                
             </div>
             <div class="col-md-4">
-                <!-- Algo xd -->
+                
             </div>
             </div>
             </div>
