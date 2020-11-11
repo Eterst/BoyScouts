@@ -75,7 +75,7 @@ class ItemController {
 
         $items->eliminarRegistro($codigo);
         $data['listado'] = $items->listar();
-        $this->view->show("ver.php", $data);
+        $this->view->show("verMiembros.php", $data);
                $message = 'Persona Eliminada';
        echo "<script type='text/javascript'>alert('$message');</script>";
     }
@@ -165,7 +165,7 @@ class ItemController {
         require 'model/ItemModel.php';
         $items = new ItemModel();
         $data['listado'] = $items->listar();
-        $this->view->show("ver.php", $data);
+        $this->view->show("verMiembros.php", $data);
     }
 
     public function listarGrupo() {

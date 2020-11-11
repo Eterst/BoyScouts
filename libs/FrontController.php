@@ -2,8 +2,8 @@
 
 class FrontController {
     static function main(){
-        require 'libs/View.php';
-        require 'libs/configuration.php';
+        require_once 'libs/View.php';
+        require_once 'libs/configuration.php';
         
         if(!empty($_GET['controlador']))
             $controllerName=$_GET['controlador'].'Controller';

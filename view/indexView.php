@@ -21,5 +21,3 @@ include_once 'public/headerPrincipal.php';
 
     include_once 'public/footerPrincipal.php';
     ?>
-
-
