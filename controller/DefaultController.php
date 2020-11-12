@@ -11,7 +11,7 @@ class DefaultController{
     public function acciondefault(){
        
         // llamar modelo para traer datos
-        $this->view->show("indexView.php", null);
+        $this->view->show("indexView.php");
                
         
     } // acciondefault

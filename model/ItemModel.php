@@ -75,14 +75,6 @@ class ItemModel {
         $consulta->CloseCursor();
         return $resultado;
     }// fin listar
-
-      public function eliminarRegistro($id) {
-        $consulta = $this->db->prepare("call eliminarRegistro('$id')");
-        $consulta->execute();
-        $resultado = $consulta->fetchAll();
-        $consulta->CloseCursor();
-        return $resultado;
-    }// fin listar
    
     public function modificarDatosMiembro($monitor,$jefe,$id_grupo,$id_miembro) {
         $consulta = $this->db->prepare("call actualizarMiembro('$monitor', '$jefe','$id_grupo','$id_miembro')");

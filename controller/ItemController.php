@@ -7,47 +7,47 @@ class ItemController {
     }
 
     public function home() {
-        require 'model/ItemModel.php';
+        require_once 'model/ItemModel.php';
         $this->view->show("indexView.php");
     }
 
     public function insertar() {
-        require 'model/ItemModel.php';
+        require_once 'model/ItemModel.php';
         $this->view->show("insertar.php");
     }
 
     public function insertarMiembroGrupo() {
-        require 'model/ItemModel.php';
+        require_once 'model/ItemModel.php';
         $this->view->show("insertarMiembroGrupo.php");
     }
 
     public function insertarMiembroRama() {
-        require 'model/ItemModel.php';
+        require_once 'model/ItemModel.php';
         $this->view->show("insertarMiembroRama.php");
     }
 
     public function insertarMiembroZona() {
-        require 'model/ItemModel.php';
+        require_once 'model/ItemModel.php';
         $this->view->show("insertarMiembroZona.php");
     }
 
     public function insertarCoordinacion() {
-        require 'model/ItemModel.php';
+        require_once 'model/ItemModel.php';
         $this->view->show("insertarCoordinacion.php");
     }
 
     public function insertarMSG() {
-        require 'model/ItemModel.php';
+        require_once 'model/ItemModel.php';
         $this->view->show("insertarMiembro.php");
     }
 
     public function ver() {
-        require 'model/ItemModel.php';
+        require_once 'model/ItemModel.php';
    
     }
 
     public function bactualizar() {
-        require 'model/ItemModel.php';
+        require_once 'model/ItemModel.php';
         $items = new ItemModel();
         $data['listado'] = $items->listar();
 
@@ -55,13 +55,13 @@ class ItemController {
     }
 
     public function actualizar() {
-        require 'model/ItemModel.php';
+        require_once 'model/ItemModel.php';
 
         $this->view->show("actualizar.php");
     }
 
     public function eliminar() {
-        require 'model/ItemModel.php';
+        require_once 'model/ItemModel.php';
         $items = new ItemModel();
         $data['listado'] = $items->listar();
         $this->view->show("eliminar.php", $data);
@@ -69,7 +69,7 @@ class ItemController {
     }
 
     public function metodoEliminarPersona() {
-        require 'model/ItemModel.php';
+        require_once 'model/ItemModel.php';
         $items = new ItemModel();
         $codigo = filter_input(INPUT_GET, 'id');
 
@@ -81,7 +81,7 @@ class ItemController {
     }
 
     public function insertarMiembroSinGrupo() {
-        require 'model/ItemModel.php';
+        require_once 'model/ItemModel.php';
         $items = new ItemModel();
          $data['listado'] = $items->listarGrupo();   
           $this->view->show("mostrargrupos.php",$data);
@@ -109,7 +109,7 @@ class ItemController {
     }
 
     public function insertarMiembro() {
-        require 'model/ItemModel.php';
+        require_once 'model/ItemModel.php';
         $items = new ItemModel();
          $data['listado'] = $items->listarGrupo();   
           $this->view->show("mostrargrupos.php",$data);
@@ -140,7 +140,7 @@ class ItemController {
     }
 
     public function insertarGrupo() {
-        require 'model/ItemModel.php';
+        require_once 'model/ItemModel.php';
         $items = new ItemModel();
          $data['listado'] = $items->listarGrupo();   
           $this->view->show("mostrargrupos.php",$data);
@@ -162,42 +162,42 @@ class ItemController {
     }
 
     public function listar() {
-        require 'model/ItemModel.php';
+        require_once 'model/ItemModel.php';
         $items = new ItemModel();
         $data['listado'] = $items->listar();
         $this->view->show("verMiembros.php", $data);
     }
 
     public function listarGrupo() {
-        require 'model/ItemModel.php';
+        require_once 'model/ItemModel.php';
         $items = new ItemModel();
         $data['listado'] = $items->listarGrupo();
         $this->view->show("mostrargrupos.php", $data);
     }
 
     public function listarRama() {
-        require 'model/ItemModel.php';
+        require_once 'model/ItemModel.php';
         $items = new ItemModel();
         $data['listado'] = $items->listarRama();
         $this->view->show("mostrarramas.php", $data);
     }
 
     public function listarZona() {
-        require 'model/ItemModel.php';
+        require_once 'model/ItemModel.php';
         $items = new ItemModel();
         $data['listado'] = $items->listarZona();
         $this->view->show("mostrarzonas.php", $data);
     }
 
     public function listarCoordinacion() {
-        require 'model/ItemModel.php';
+        require_once 'model/ItemModel.php';
         $items = new ItemModel();
         $data['listado'] = $items->listarCoordinacion();
         $this->view->show("mostrarcoordinacion.php", $data);
     }
 
     public function listarMiembros() {
-        require 'model/ItemModel.php';
+        require_once 'model/ItemModel.php';
         $items = new ItemModel();
         $codigo = filter_input(INPUT_GET, 'id');
         $data['listado'] = $items->listarMiembros($codigo);
@@ -206,7 +206,7 @@ class ItemController {
     }
 
     public function modificarVistaMiembro() {
-        require 'model/ItemModel.php';
+        require_once 'model/ItemModel.php';
         $items = new ItemModel();
         $id = filter_input(INPUT_GET, 'id');
         $data['listado'] = $items->selectMiembro($id);
@@ -214,7 +214,7 @@ class ItemController {
     }
 
     public function metodoActualizarMiembro() {
-        require 'model/ItemModel.php';
+        require_once 'model/ItemModel.php';
         $items = new ItemModel();
         $id_miembro = filter_input(INPUT_POST, 'idmiembro');
         $monitor = filter_input(INPUT_POST, 'monitor');
@@ -228,7 +228,7 @@ class ItemController {
     }
 
     public function metodoEliminarMiembro() {
-        require 'model/ItemModel.php';
+        require_once 'model/ItemModel.php';
         $items = new ItemModel();
         $codigo = filter_input(INPUT_GET, 'id');
 
@@ -240,7 +240,7 @@ class ItemController {
     }
 
     public function metodoEliminarMiembroGrupo() {
-        require 'model/ItemModel.php';
+        require_once 'model/ItemModel.php';
         $items = new ItemModel();
         $codigo = filter_input(INPUT_GET, 'id');
         $idgrupo = filter_input(INPUT_GET, 'idgrupo');
