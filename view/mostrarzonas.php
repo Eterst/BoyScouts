@@ -8,10 +8,10 @@ include_once 'public/headerZonas.php';
     Regresar 
 </a>
 
-<center> <label   style="background-color: #00000; font-size: 20px;">Consultar Persona </label> </center>
+<center> <label   style="background-color: #00000; font-size: 20px;">Zonas </label> </center>
 
 <center>
-    <a class="badge badge-primary" href="#" data-toggle="modal" data-target="#largeModal">Nuevo Registro
+    <a class="badge badge-primary" href="#" data-toggle="modal" data-target="#largeModal">Nueva Zona
 
         <img src="public/img/register.svg"  width="30" height="30"> </img>
     </a>
@@ -34,20 +34,18 @@ include_once 'public/headerZonas.php';
 
 <div class="container-fluid">
     <table class="datatable table table-hover table-bordered">
-        <th>ID</th>
         <th>Nombre</th>
-        <th>ID Coordinacion</th>
+        <th>Coordinacion</th>
         </tr>
 
         <?php
-        foreach ($vars['listado'] as $item) {
+        foreach ($vars['listado'] as $key => $item) {
             ?>
             <tr>
-                <td><?php echo $item[0] ?></td>
                 <td><?php echo $item[2] ?></td>
-                <td><?php echo $item[1] ?></td>
+                <td><?php echo $vars['parent'][$key][1] ?></td>
                 
-                <td>  <a  class="btn btn-warning" href='?controlador=Item&accion=listarMiembros&id=<?php echo $item[0] ?>'> 
+                <td>  <a  class="btn btn-warning" href='?controlador=Item&accion=listarMiembrosGrupo&id=<?php echo $item[0] ?>'> 
                         <img src="public/img/enter.png"  width="20" height="20"> </img>
                     </a> 
                 </td>

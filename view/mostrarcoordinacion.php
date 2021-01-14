@@ -34,7 +34,6 @@ include_once 'public/headerCoordinaciones.php';
 
 <div class="container-fluid">
     <table class="datatable table table-hover table-bordered">
-        <th>ID</th>
         <th>Nombre</th>
         </tr>
 
@@ -42,10 +41,9 @@ include_once 'public/headerCoordinaciones.php';
         foreach ($vars['listado'] as $item) {
             ?>
             <tr>
-                <td><?php echo $item[0] ?></td>
                 <td><?php echo $item[1] ?></td>
                 
-                <td>  <a  class="btn btn-warning" href='?controlador=Item&accion=listarMiembros&id=<?php echo $item[0] ?>'> 
+                <td>  <a  class="btn btn-warning" href='?controlador=Item&accion=listarMiembrosGrupo&id=<?php echo $item[0] ?>'> 
                         <img src="public/img/enter.png"  width="20" height="20"> </img>
                     </a> 
                 </td>

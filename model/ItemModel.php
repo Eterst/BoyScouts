@@ -44,6 +44,14 @@ class ItemModel {
         return $resultado;
     }// fin listar
 
+    public function getGrupo($id) {
+        $consulta = $this->db->prepare("select * from grupo where id = $id");
+        $consulta->execute();
+        $resultado = $consulta->fetchAll();
+        $consulta->CloseCursor();
+        return $resultado;
+    }// fin listar
+
     public function listarRama() {
         $consulta = $this->db->prepare('call mostrarRamas()');
         $consulta->execute();
@@ -68,8 +76,16 @@ class ItemModel {
         return $resultado;
     }// fin listar
 
-    public function listarMiembros($id) {
-        $consulta = $this->db->prepare("call mostrarMiembros('$id')");
+    public function listarMiembrosGrupo($id) {
+        $consulta = $this->db->prepare("call mostrarMiembrosGrupo('$id')");
+        $consulta->execute();
+        $resultado = $consulta->fetchAll();
+        $consulta->CloseCursor();
+        return $resultado;
+    }// fin listar
+
+    public function listarMiembros() {
+        $consulta = $this->db->prepare("select * from miembro join direccion where cedula = id_miembro");
         $consulta->execute();
         $resultado = $consulta->fetchAll();
         $consulta->CloseCursor();

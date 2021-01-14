@@ -19,6 +19,10 @@ class Grupo
 	function __construct($nombre,$tipo,$parent,$miembro_fundador){
 		$this->nombre = $nombre;
 		$this->tipo = $tipo;
+		$this->grupos = array();
+		$this->miembros = array();
+		$this->jefes = array();
+		$this->monitores = array();
 		array_push($this->miembros, $miembro_fundador);
 		array_push($parent, $this);
 	}

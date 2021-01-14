@@ -32,7 +32,7 @@
                              <a class="nav-link" href="?controlador=Item&accion=home">Home<span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                             <a class="nav-link" href="?controlador=Item&accion=insertarMSG">Insertar Miembro SG</a>
+                             <a class="nav-link" href="?controlador=Item&accion=listarMiembros">Miembros</a>
                         </li>
                         <li class="nav-item">
                              <a class="nav-link" href="?controlador=Item&accion=listarGrupo">Grupos</a>

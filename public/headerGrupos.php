@@ -44,7 +44,7 @@
                                          <a class="nav-link" href="?controlador=Item&accion=insertarMiembroGrupo">Insertar Grupo</a>
                                     </li>
                                     <li class="nav-item">
-                                         <a class="nav-link" href="?controlador=Item&accion=insertarMiembroGrupo">Añadir miembro</a>
+                                         <a class="nav-link" href="?controlador=Item&accion=insertarMiembro">Añadir miembro</a>
                                     </li>
                                     <li class="nav-item">
                                          <a class="nav-link" href="?controlador=Item&accion=home">Salir</a>

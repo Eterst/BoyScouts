@@ -11,9 +11,13 @@ class ItemController {
         $this->view->show("indexView.php");
     }
 
-    public function insertar() {
+    public function formularioGrupo() {
         require_once 'model/ItemModel.php';
-        $this->view->show("insertar.php");
+        $items = new ItemModel();
+        $data['ramas'] = $items->listarRama();
+        $data['miembros'] = $items->listarMiembros();
+
+        $this->view->show("formularioGrupo.php",$data);
     }
 
     public function insertarMiembroGrupo() {
@@ -111,8 +115,12 @@ class ItemController {
     public function insertarMiembro() {
         require_once 'model/ItemModel.php';
         $items = new ItemModel();
-         $data['listado'] = $items->listarGrupo();   
-          $this->view->show("mostrargrupos.php",$data);
+        $data['listado'] = $items->listarGrupo();   
+        $this->view->show("mostrargrupos.php",$data);
+
+        $monitor = 0;
+        $jefe = 0;
+
         $cedula = filter_input(INPUT_POST, 'cedula');
         $nombre = filter_input(INPUT_POST, 'nombre');
         $apellido = filter_input(INPUT_POST, 'apellidos');
@@ -124,19 +132,22 @@ class ItemController {
         $distrito = filter_input(INPUT_POST, 'distrito');
         $detalle = filter_input(INPUT_POST, 'detalle');
         $idgrupo = filter_input(INPUT_POST, 'idgrupo');
-        $monitor = filter_input(INPUT_POST, 'monitor');
-        $jefe = filter_input(INPUT_POST, 'jefe');
+
+        if(filter_input(INPUT_POST, 'jefe') == "1"){
+            $jefe = 1;
+        }else if(filter_input(INPUT_POST, 'monitor') == "1"){
+            $monitor = 1;
+        }
       
-      $resultado=  $items->insertar($cedula, $nombre, $apellido, $correo, $telefono, $pais, $provincia,$canton,$distrito,$detalle,$idgrupo,$monitor,$jefe);
-      if($resultado!= null){
+        $resultado=  $items->insertar($cedula, $nombre, $apellido, $correo, $telefono, $pais, $provincia,$canton,$distrito,$detalle,$idgrupo,$monitor,$jefe);
+        if($resultado!= null){
         $message = 'Miembro Registrada';
-       echo "<script type='text/javascript'>alert('$message');</script>";  
-      }else{
+        echo "<script type='text/javascript'>alert('$message');</script>";  
+        }else{
           $message = $nombre.', registrado (a)';
-       echo "<script type='text/javascript'>alert('$message');</script>";
+        echo "<script type='text/javascript'>alert('$message');</script>";
           
-      }
-          
+        }
     }
 
     public function insertarGrupo() {
@@ -149,15 +160,15 @@ class ItemController {
         $tipo = filter_input(INPUT_POST, 'tipo');
         $cedulamonitor = filter_input(INPUT_POST, 'cedulamonitor');
       
-      $resultado=  $items->insertarGrupo($nombre,$tipo,$idrama,$cedulamonitor);
-      if($resultado!= null){
+        $resultado=  $items->insertarGrupo($nombre,$tipo,$idrama,$cedulamonitor);
+        if($resultado!= null){
         $message = 'Grupo Registrada';
-       echo "<script type='text/javascript'>alert('$message');</script>";  
-      }else{
+        echo "<script type='text/javascript'>alert('$message');</script>";  
+        }else{
           $message = $nombre.', registrado (a)';
-       echo "<script type='text/javascript'>alert('$message');</script>";
+        echo "<script type='text/javascript'>alert('$message');</script>";
           
-      }
+        }
           
     }
 
@@ -172,6 +183,12 @@ class ItemController {
         require_once 'model/ItemModel.php';
         $items = new ItemModel();
         $data['listado'] = $items->listarGrupo();
+        $data['parent'] = array();
+
+        foreach ($data['listado'] as $item) {
+            array_push($data['parent'], $items->getGrupo($item[1])[0] );
+        }
+        
         $this->view->show("mostrargrupos.php", $data);
     }
 
@@ -179,6 +196,12 @@ class ItemController {
         require_once 'model/ItemModel.php';
         $items = new ItemModel();
         $data['listado'] = $items->listarRama();
+        $data['parent'] = array();
+
+        foreach ($data['listado'] as $item) {
+            array_push($data['parent'], $items->getGrupo($item[1])[0] );
+        }
+
         $this->view->show("mostrarramas.php", $data);
     }
 
@@ -186,6 +209,11 @@ class ItemController {
         require_once 'model/ItemModel.php';
         $items = new ItemModel();
         $data['listado'] = $items->listarZona();
+        $data['parent'] = array();
+
+        foreach ($data['listado'] as $item) {
+            array_push($data['parent'], $items->getGrupo($item[1])[0] );
+        }
         $this->view->show("mostrarzonas.php", $data);
     }
 
@@ -196,12 +224,20 @@ class ItemController {
         $this->view->show("mostrarcoordinacion.php", $data);
     }
 
+    public function listarMiembrosGrupo() {
+        require_once 'model/ItemModel.php';
+        $items = new ItemModel();
+        $codigo = filter_input(INPUT_GET, 'id');
+        $data['listado'] = $items->listarMiembrosGrupo($codigo);
+        $data['idgrupo'] = $codigo;
+        $this->view->show("verMiembrosGrupo.php", $data);
+    }
+
     public function listarMiembros() {
         require_once 'model/ItemModel.php';
         $items = new ItemModel();
         $codigo = filter_input(INPUT_GET, 'id');
-        $data['listado'] = $items->listarMiembros($codigo);
-        $data['idgrupo'] = $codigo;
+        $data['listado'] = $items->listarMiembros();
         $this->view->show("verMiembros.php", $data);
     }
 

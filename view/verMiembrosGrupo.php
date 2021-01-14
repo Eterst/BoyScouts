@@ -12,9 +12,8 @@ include_once 'public/HeaderPrincipal.php';
 
 <!-- $data['idgrupo'] -->
 <center>
-    <a class="badge badge-primary" href="?controlador=Item&accion=insertarMSG" >Insertar Miembro
-
-        <img src="public/img/register.svg"  width="30" height="30"> </img>
+    <a class="badge badge-primary" href="?controlador=Item&accion=insertarMiembroGrupo&idgrupo=<?php echo $vars['idgrupo']?>" >Insertar Miembro
+    <img src="public/img/register.svg"  width="30" height="30"> </img>
     </a>
 </center>
 <br><br> 
@@ -42,11 +41,11 @@ include_once 'public/HeaderPrincipal.php';
                 <td><?php echo $item[2] ?></td>
                 <td><?php echo $item[3] ?></td>
                 <td><?php echo $item[4] ?></td>
+                <td><?php echo $item[5] ?></td>
                 <td><?php echo $item[6] ?></td>
                 <td><?php echo $item[7] ?></td>
                 <td><?php echo $item[8] ?></td>
                 <td><?php echo $item[9] ?></td>
-                <td><?php echo $item[10] ?></td>
                 <td>  <a  class="btn btn-warning" href='?controlador=Item&accion=modificarVistaMiembro&id=<?php echo $item[0] ?>'> 
                         <img src="public/img/register.svg"  width="20" height="20"> </img>
                     </a>

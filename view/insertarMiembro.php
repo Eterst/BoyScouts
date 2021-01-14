@@ -4,7 +4,7 @@ include_once 'public/headerPrincipal.php';
 <a  class="badge badge-primary" href="?controlador=Item&accion=home" title="Ir la página anterior">Regresar al Menú Principal</a>
 <form action="?controlador=Item&accion=insertarMiembroSinGrupo" method="post">
     <center> 
-        <label   style="color: #000000; font-size: 20px;">Registrar Persona Sin Grupo</label> 
+        <label   style="color: #000000; font-size: 20px;">Registrar Persona</label> 
     </center>
         <div class="container-fluid">
                 <div class="row">
