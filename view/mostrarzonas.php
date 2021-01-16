@@ -1,5 +1,5 @@
 <?php
-include_once 'public/headerZonas.php';
+include_once 'public/headerPrincipal.php';
 ?>
   
 
@@ -9,7 +9,8 @@ include_once 'public/headerZonas.php';
 </a>
 
 <center> <label   style="background-color: #00000; font-size: 20px;">Zonas </label> </center>
-
+<br><br>
+<!--
 <center>
     <a class="badge badge-primary" href="#" data-toggle="modal" data-target="#largeModal">Nueva Zona
 
@@ -17,20 +18,7 @@ include_once 'public/headerZonas.php';
     </a>
 </center>
 <br><br>
-
-<div id="largeModal" class="modal fade" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Formulario de Registro</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            </div>
-            <div class="modal-body">
-            </div>
-        </div>
-    </div>
-</div>  
-
+-->
 
 <div class="container-fluid">
     <table class="datatable table table-hover table-bordered">
